@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.example.characterviewer.MainActivityViewModel" />
+    </data>
+
+    <androidx.slidingpanelayout.widget.SlidingPaneLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sliding_pane_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:padding="8dp"
+            android:layout_width="550dp"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_gravity="start"/>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/detail_container"
+            android:layout_width="300dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.currentCharacter == null ? View.GONE : View.VISIBLE}"
+            android:name="com.example.characterviewer.ui.details.SearchDetails" />
+
+    </androidx.slidingpanelayout.widget.SlidingPaneLayout>
+
+</layout>
